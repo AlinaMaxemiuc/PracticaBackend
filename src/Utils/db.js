@@ -1,10 +1,12 @@
 const mysql = require("mysql");
+require('dotenv').config()
 
+//conexiune la baza de date
 const connection = mysql.createConnection({
-  host: "localhost",
-  user: "admin",
-  password: "root",
-  database:"practica",
+  host: process.env.host,
+  user: process.env.user,
+  password: process.env.password,
+  database: process.env.database,
 });
 
 connection.connect((error) => {
