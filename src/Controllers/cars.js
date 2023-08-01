@@ -13,7 +13,7 @@ router.get('/car',(req,res)=>{
 
 //creare/adaugare masina => inserare in baza de date
 router.post('/car',(req,res)=>{
-    connection.query(`insert into practica.cars values("${req.body.idcars}", "${req.body.brand}", "${req.body.model}", "${req.body.culoare}", "${req.body.range}")`,function(err,result){
+    connection.query(`insert into practica.cars (brand,model,culoare,km) values ("${req.body.brand}", "${req.body.model}", "${req.body.culoare}", ${req.body.km})`,function(err,result){
         if(err) console.log("error"+err);
         res.send(JSON.stringify(result));
     });

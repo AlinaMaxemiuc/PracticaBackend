@@ -3,6 +3,7 @@ const app = express()
 const db = require("./src/Controllers/dbController.js")
 const login=require("./src/Controllers/Auth.js")
 const cars=require("./src/Controllers/cars.js")
+const rentals=require("./src/Controllers/rentals.js")
 const cors = require('cors')
 const bodyParser = require('body-parser')
 
@@ -38,6 +39,8 @@ app.use(cors(corsOptions));
  //afisare masini
  app.use('/',cars);
 
+ //afisare inchirieri
+ app.use('/',rentals);
 
 //portul si verificare conectare la server
 port=3001
