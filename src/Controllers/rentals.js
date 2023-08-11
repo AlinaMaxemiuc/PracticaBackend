@@ -5,7 +5,7 @@ const connection=require("../Utils/db.js")
 //preluare date din baza de date / afisare
 router.get('/rentals',(req,res)=>{
     console.log(req.body);
-    connection.query(`select u.name, c.brand, c.model, r.startDate, r.stopDate 
+    connection.query(`select r.idrentals, u.name, c.brand, c.model, r.startDate, r.stopDate 
     from practica.rentals r, practica.users u, practica.cars c 
     where r.iduser=u.idusers and r.idcar=c.idcars;`,function (err, result) {
       if (err) throw err;
