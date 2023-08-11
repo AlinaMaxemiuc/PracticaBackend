@@ -21,11 +21,22 @@ router.post('/rentals',(req,res)=>{
     });
 })
 //stergere user din baza de date
-router.delete('/rentals',(req,res)=>{
-    connection.query(`delete from practica.rentals where iduser=3`,function(err,result,fields){
+router.delete('/rentals/:rentalId', (req, res) => {
+    const rentalId = req.params.rentalId;
+
+    connection.query('DELETE FROM practica.rentals WHERE idrentals = ?', [rentalId], function(err, result, fields) {
+        if (err) {
+            console.log("error: " + err);
+        } else {
+            res.send(JSON.stringify({ message: "Rental deleted successfully"}));
+        }
+    });
+});
+//preluare brand 
+router.get('/brand',(req,res)=>{
+    connection.query(`select c.idcars, c.brand, c.model from practica.cars c`,function(err,result,fields){
         if(err) console.log("error"+err);
         res.send(JSON.stringify(result));
     });
 })
-
 module.exports= router

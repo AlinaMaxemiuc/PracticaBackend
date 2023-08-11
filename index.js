@@ -42,6 +42,7 @@ app.use(cors(corsOptions));
  //afisare inchirieri
  app.use('/',rentals);
 
+
 //portul si verificare conectare la server
 port=3001
 app.listen(port,()=>{
